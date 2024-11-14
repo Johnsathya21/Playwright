@@ -2,8 +2,7 @@ pipeline {
     agent any  // Use any available agent to run the pipeline (you can specify a specific agent if required)
 
     environment {
-        // Define any environment variables here
-        // For example, PATH = "/usr/local/bin:$PATH"
+      MY_ENV_VAR = 'some_value'  // Example environment variable
     }
 
     stages {
@@ -73,7 +72,13 @@ pipeline {
 
     post {
         always {
-            // Clean-up or notifications can be done here
+            echo 'This will always run, even if the pipeline fails'
+        }
+        success {
+            echo 'Pipeline succeeded!'
+        }
+        failure {
+            echo 'Pipeline failed!'
         }
     }
 }
