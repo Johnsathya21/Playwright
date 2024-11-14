@@ -18,16 +18,16 @@ pipeline {
         }
 
         
-            stage('Run Background Command') {
+             stage('Run Background Command') {
             steps {
                 script {
                     if (isUnix()) {
                         sh 'nohup your-command > output.log 2>&1 &'
                     } else {
-                        // Run background command and wait for a delay using timeout
+                        // Run the background command with a delay
                         bat '''
                             start /B echo "Starting command"
-                            timeout /t 5 /nobreak
+                            timeout /t 5
                         '''
                     }
                 }
