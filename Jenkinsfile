@@ -24,8 +24,9 @@ pipeline {
                     if (isUnix()) {
                         sh 'nohup your-command > output.log 2>&1 &'
                     } else {
+                        // Run background command and wait for a delay using timeout
                         bat '''
-                            start /B echo "Starting command" > output.log 2>&1
+                            start /B echo "Starting command"
                             timeout /t 5 /nobreak
                         '''
                     }
