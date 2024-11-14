@@ -5,7 +5,8 @@ pipeline {
       MY_ENV_VAR = 'some_value'  // Example environment variable
     }
 
-    stages {
+    stages 
+    {
         // Stage 1: Checkout
         stage('Checkout') {
             steps {
@@ -16,21 +17,25 @@ pipeline {
             }
         }
 
-        stages {
-        stage('Run Background Command') {
-            steps {
-                script {
-                    if (isUnix()) {
-                        // For Unix-like systems (Linux/macOS)
-                        sh 'nohup your-command > output.log 2>&1 &'
-                    } else {
-                        // For Windows systems
-                        bat 'start /B your-command > output.log 2>&1'
+        
+            stage('Run Background Command') 
+            {
+                steps 
+                {
+                    script 
+                    {
+                        if (isUnix()) {
+                            // For Unix-like systems (Linux/macOS)
+                            sh 'nohup your-command > output.log 2>&1 &'
+                        } else 
+                        {
+                            // For Windows systems
+                            bat 'start /B your-command > output.log 2>&1'
+                        }
                     }
                 }
             }
-        }
-    }
+        
 
         // Stage 2: Install Dependencies
         stage('Install Dependencies') {
