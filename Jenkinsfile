@@ -24,10 +24,9 @@ pipeline {
                     if (isUnix()) {
                         sh 'nohup your-command > output.log 2>&1 &'
                     } else {
-                        // Run the background command with a delay
+                        // Just start the command in background without timeout or redirection
                         bat '''
                             start /B echo "Starting command"
-                            timeout /t 5
                         '''
                     }
                 }
