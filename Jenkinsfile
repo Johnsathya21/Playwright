@@ -18,7 +18,7 @@ pipeline {
         }
 
         
-             stage('Run Background Command') {
+            stage('Run Background Command') {
             steps {
                 script {
                     if (isUnix()) {
@@ -26,7 +26,7 @@ pipeline {
                     } else {
                         bat '''
                             start /B echo "Starting command" > output.log 2>&1
-                            sleep 5  // Wait for the process to start
+                            timeout /t 5 /nobreak
                         '''
                     }
                 }
