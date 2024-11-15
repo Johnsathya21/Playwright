@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'NodeJS_20' // Matches the name configured in Step 1
+        nodejs 'nodejs' // Matches the name configured in Step 1
     }
 
     stages {
